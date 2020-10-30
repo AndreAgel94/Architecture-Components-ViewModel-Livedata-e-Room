@@ -74,20 +74,7 @@ class FormularioNoticiaActivity : AppCompatActivity() {
     }
 
     private fun salva(noticia: Noticia) {
-        val falha = { _: String? ->
-            mostraErro(MENSAGEM_ERRO_SALVAR)
-        }
-        val sucesso = { _: Noticia ->
-            finish()
-        }
 
-        if (noticia.id > 0) {
-            repository.edita(
-                noticia,
-                quandoSucesso = sucesso,
-                quandoFalha = falha
-            )
-        } else {
             viewModel.salva(noticia).observe(this, Observer {
                 if (it.erro == null){
                     finish()
@@ -95,13 +82,9 @@ class FormularioNoticiaActivity : AppCompatActivity() {
                     mostraErro(MENSAGEM_ERRO_SALVAR)
                 }
             })
-//            repository.salva(
-//                noticia,
-//                quandoSucesso = sucesso,
-//                quandoFalha = falha
-//            )
+
         }
     }
 
 
-}
+
