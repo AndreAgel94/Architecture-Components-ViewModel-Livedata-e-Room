@@ -18,6 +18,5 @@ class FormularioNoticiaViewModel(
         }
 
     }
-
-
+    fun buscaPorId(id: Long) = repository.buscaPorId(id)
 }
